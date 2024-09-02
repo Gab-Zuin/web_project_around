@@ -1,0 +1,11 @@
+@media screen and (max-width: 768px) {
+  .content {
+    max-width: 777px;
+  }
+}
+
+@media all and (max-width: 320px) {
+  .content {
+    max-width: 282px;
+  }
+}
