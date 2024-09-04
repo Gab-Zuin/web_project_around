@@ -1,11 +1,43 @@
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
+   .container {
+    max-width: 768px;
+  }
+
+  .profile {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
   .content {
-    max-width: 777px;
+    max-width: 768px;
+    margin: auto;
+  }
+   .container {
+    display: block;
   }
 }
 
 @media all and (max-width: 320px) {
-  .content {
+  .container {
     max-width: 282px;
   }
+
+  .profile {
+    grid-template-areas:
+      "avatar"
+      "name edit"
+      "profession"
+      "add";
+    grid-template-columns: 1fr;
+  }
+
+  .content {
+    max-width: 320px;
+    margin: auto;
+  }
+ .container {
+    flex-direction: column;
+    align-items: center;
+  }
 }
+*/

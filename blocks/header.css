@@ -1,0 +1,15 @@
+.header {
+  margin: 0 95px auto;
+}
+
+.header__vector {
+  max-width: 173px;
+  padding-top: 45px;
+  padding-bottom: 45px;
+}
+
+.header__line {
+  padding-bottom: 40px;
+  width: 880px;
+  margin: auto;
+}

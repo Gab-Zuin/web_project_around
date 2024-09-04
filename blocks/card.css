@@ -1,0 +1,33 @@
+.card {
+  max-width: 282px;
+  max-height: 361px;
+  border-radius: 10px;
+  background-color: rgb(157, 157, 157);
+}
+
+.card__image {
+  max-width: 282px;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+}
+
+.card__content {
+  display: flex;
+  padding: 25px 15px 30px 20px;
+  margin-left: 8px;
+  justify-content: space-between;
+}
+
+.card__place {
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29.05px;
+  text-align: left;
+  margin: 0;
+}
+
+.card__like {
+  max-width: 21px;
+  margin-left: 10px;
+}
