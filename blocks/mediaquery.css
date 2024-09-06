@@ -1,19 +1,22 @@
-/* @media screen and (max-width: 768px) {
-   .container {
-    max-width: 768px;
-  }
-
+@media screen and (max-width: 768px) {
   .profile {
-    display: flex;
-    flex-wrap: wrap;
+    grid-template-areas:
+      "avatar name edit"
+      "avatar profession ."
+      "add add add";
+    grid-template-columns: 120px 415px 1fr;
+    margin: 0 auto;
+    max-width: 581px;
   }
 
-  .content {
-    max-width: 768px;
-    margin: auto;
+  .profile__name {
+    font-size: 2rem;
   }
-   .container {
-    display: block;
+
+  .profile__add-button {
+    max-width: 150px;
+    padding: 0 0 50px 0;
+    margin: auto;
   }
 }
 
@@ -23,21 +26,42 @@
   }
 
   .profile {
-    grid-template-areas:
-      "avatar"
+    /*grid-template-areas:
+      "avatar ."
       "name edit"
-      "profession"
-      "add";
-    grid-template-columns: 1fr;
+      "profession ."
+      "add .";
+    grid-template-columns: 1fr 18px;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0 30px 0;
+  }
+
+  .profile__avatar {
+    justify-self: center;
+  }
+
+  .profile__name {
+    font-size: 1.3rem;
+  }
+
+  .profile__profession {
+    padding: 0;
+    margin-left: 0;
   }
 
   .content {
     max-width: 320px;
     margin: auto;
   }
- .container {
+  .container {
     flex-direction: column;
     align-items: center;
+    margin: auto;
+  }
+
+  .footer {
+    padding: 50px 19px 36px 19px;
   }
 }
-*/
