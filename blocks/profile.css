@@ -3,6 +3,8 @@
   max-width: 880px;
   width: 100%;
   margin: 45px 0 50px 0;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .profile__avatar {
@@ -23,10 +25,10 @@
   max-width: 415px;
   width: 100%;
   flex-direction: row;
+  align-items: center;
 }
 
 .profile__name {
-  /*grid-area: name;*/
   font-family: Inter;
   font-size: 2.6rem;
   font-weight: 500;
@@ -39,7 +41,6 @@
 }
 
 .profile__profession {
-  /*grid-area: profession;*/
   font-family: Inter;
   font-size: 18px;
   font-weight: 400;
@@ -51,7 +52,6 @@
 }
 
 .profile__edit-button {
-  /*grid-area: edit;*/
   background-color: transparent;
   color: #ffffff;
   width: 24px;
@@ -60,8 +60,6 @@
 }
 
 .profile__add-button {
-  /*grid-area: add;
-  margin-left: 165px;*/
   background-color: transparent;
   color: #ffffff;
   border: 2px solid #ffffff;
