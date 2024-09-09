@@ -46,16 +46,18 @@
             </button>
           </div>
         </section>
-        <section class="popup" id="">
+        <div class="popup" id="">
           <form class="popup__container">
-            <button class="popup__close"></button>
+            <button class="popup__close">
+              <img src="./Images/Close Icon.svg" alt="boton de cierre" />
+            </button>
             <fieldset class="form">
               <h2 class="form__title">Editar perfil</h2>
-              <label for="name" class="form__label">Nombre</label>
+
               <input
                 type="text"
                 class="form__input form__input_name"
-                id="name"
+                id="input_name"
                 name="name"
                 placeholder="Nombre"
                 required
@@ -63,7 +65,7 @@
               <input
                 type="text"
                 class="form__input form__input_about"
-                id="about"
+                id="input_about"
                 name="about"
                 placeholder="Acerca de mí"
                 required
@@ -71,7 +73,7 @@
               <button class="form__submit" type="submit">Guardar</button>
             </fieldset>
           </form>
-        </section>
+        </div>
         <section>
           <div class="container">
             <div class="card">
@@ -171,6 +173,7 @@
         </section>
       </main>
       <footer class="footer">© 2021 Around The U.S.</footer>
+      <script src="./index.js"></script>
     </div>
   </body>
 </html>
