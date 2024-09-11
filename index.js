@@ -13,7 +13,7 @@ profileButton.addEventListener("click", function () {
   popupProfile.classList.add("popup_opened");
 });
 
-popupClose.removeEventListener("click", function () {
+popupClose.addEventListener("click", function () {
   closePopup();
 });
 
