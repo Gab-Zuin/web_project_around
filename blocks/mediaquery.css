@@ -1,16 +1,29 @@
-@media all and (max-width: 800px) {
+@media all and (max-width: 890px) {
+  .profile {
+    max-width: 790px;
+    width: 100%;
+    margin: 45px auto;
+  }
+
+  .profile__info {
+    margin: 0;
+  }
+  .profile__content {
+    max-width: 315px;
+  }
+
   .profile__name {
     font-size: 2rem;
-    max-width: 319px;
-    margin: 0;
+    max-width: 315px;
+    margin-left: 30px;
   }
 
   .profile__add-button {
-    max-width: 280px;
+    max-width: 150px;
     width: 100%;
     max-height: 50px;
     height: fit-content;
-    margin: 0 auto;
+    margin: 0;
     padding: 15px;
   }
 }
@@ -21,9 +34,116 @@
     max-width: 239px;
     margin: 0;
   }
+
+  .profile__profession {
+    padding: 0 0 30px 0;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .profile__avatar {
+    margin-left: 60px;
+  }
+
+  .profile__name {
+    font-size: 1.3rem;
+    max-width: 196px;
+  }
+
+  .profile__info {
+    display: flex;
+    max-width: 282px;
+    margin: 0;
+  }
+
+  .profile__content {
+    max-width: 224px;
+    margin: auto;
+  }
+
+  .profile__profession {
+    max-width: 224px;
+    margin-left: 29px;
+  }
+  .popup {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .popup__container {
+    max-width: 465px;
+  }
+
+  .popup_opened {
+    display: flex;
+  }
+
+  .popup__close {
+    max-width: 1.8rem;
+    width: 90%;
+    height: 90%;
+    background-color: transparent;
+    color: white;
+    margin-left: 264px;
+    margin-top: 72px;
+  }
+
+  .popup__close:hover {
+    opacity: 0.6;
+  }
+
+  .form {
+    max-width: 310px;
+    width: 100%;
+    max-height: 322px;
+    padding: 0;
+    margin: 0 19px 0 19px;
+    border: 0;
+  }
+
+  .form__title {
+    max-width: 248px;
+    width: 100%;
+    max-height: 22px;
+    margin: 25px 22px 76px 22px;
+    text-align: left;
+  }
+
+  .form__input_name,
+  .form__input_about {
+    max-width: 248px;
+    width: 100%;
+    margin: 0 22px 46px 22px;
+    border: 0;
+    padding: 0;
+  }
+
+  .form__submit {
+    max-width: 248px;
+    max-height: 46px;
+    margin: 0 22px 25px 22px;
+    border: 0;
+    padding: 0;
+  }
+
+  .form__submit:hover {
+    opacity: 0.8;
+  }
 }
 
 @media all and (max-width: 320px) {
+  .page {
+    max-width: 320px;
+    width: 100%;
+  }
+
+  .header {
+    padding: 0 0 45px 27px;
+  }
+  .content {
+    max-width: 282px;
+  }
+
   .profile__name {
     font-size: 1.3rem;
     max-width: 196px;
@@ -51,5 +171,70 @@
     height: fit-content;
     margin: 0 auto;
     padding: 15px;
+  }
+
+  .popup {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .popup__container {
+    max-width: 320px;
+  }
+
+  .popup_opened {
+    display: flex;
+  }
+
+  .popup__close {
+    max-width: 1.6rem;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    color: white;
+    margin-left: 264px;
+    margin-top: 72px;
+  }
+
+  .popup__close:hover {
+    opacity: 0.6;
+  }
+
+  .form {
+    max-width: 282px;
+    width: 100%;
+    max-height: 322px;
+    padding: 0;
+    margin: 0 19px 0 19px;
+    border: 0;
+  }
+
+  .form__title {
+    max-width: 238px;
+    width: 100%;
+    max-height: 22px;
+    margin: 25px 22px 76px 22px;
+    text-align: left;
+  }
+
+  .form__input_name,
+  .form__input_about {
+    max-width: 238px;
+    width: 100%;
+    margin: 0 22px 46px 22px;
+    border: 0;
+    padding: 0;
+  }
+
+  .form__submit {
+    max-width: 238px;
+    max-height: 46px;
+    margin: 0 22px 25px 22px;
+    border: 0;
+    padding: 0;
+  }
+
+  .form__submit:hover {
+    opacity: 0.8;
   }
 }

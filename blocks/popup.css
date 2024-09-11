@@ -8,7 +8,6 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  border-radius: 10px;
   z-index: 99999;
 }
 
@@ -20,7 +19,6 @@
 }
 
 .popup__close {
-  position: absolute;
   max-width: 2.5rem;
   width: 100%;
   height: 100%;
@@ -28,8 +26,7 @@
   border: none;
   cursor: pointer;
   background-color: transparent;
-  top: 146px;
-  left: 846px;
+  margin-left: 460px;
 }
 
 .popup__close:hover {
