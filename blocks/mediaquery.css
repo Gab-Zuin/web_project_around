@@ -144,6 +144,10 @@
     max-width: 282px;
   }
 
+  .profile__avatar {
+    margin-left: 0;
+  }
+
   .profile__name {
     font-size: 1.3rem;
     max-width: 196px;
