@@ -43,7 +43,31 @@
               <img src="./Images/Vector add.svg" alt="Boton editar" />
             </button>
           </div>
+          <div class="container">
+            <div class="card">
+              <img
+                src="./Images/Trash.svg"
+                alt="vector Trash"
+                class="card__trash"
+              />
+              <img
+                src="./Images/Grand Teton.jpg"
+                alt="Grand Teton"
+                class="card__image"
+              />
+              <div class="card__content">
+                <p class="card__place">Grand Teton</p>
+                <img
+                  src="./Images/Vector Like.svg"
+                  alt="vector Like"
+                  class="card__like"
+                />
+              </div>
+            </div>
+          </div>
         </section>
+
+        <!-- POPUP EDITAR PERFIL -->
         <div class="popup" id="">
           <form class="popup__container" id="form__profile">
             <img
@@ -74,105 +98,34 @@
             </fieldset>
           </form>
         </div>
-        <section>
-          <div class="container">
-            <div class="card">
-              <!-- 1 -->
-              <img
-                src="./Images/Grand Teton.jpg"
-                alt="Grand Teton"
-                class="card__image"
-              />
-              <div class="card__content">
-                <p class="card__place">Grand Teton</p>
-                <img
-                  src="./Images/Vector Like.svg"
-                  alt="vector Like"
-                  class="card__like"
-                />
-              </div>
-            </div>
-
-            <div class="card">
-              <!-- 2 -->
-              <img
-                src="./Images/Rocky Mountain.jpg"
-                alt="Rocky Mountain"
-                class="card__image"
-              />
-              <div class="card__content">
-                <p class="card__place">Rocky Mountain</p>
-                <img
-                  src="./Images/Vector Like.svg"
-                  alt="vector Like"
-                  class="card__like"
-                />
-              </div>
-            </div>
-
-            <div class="card">
-              <!-- 3 -->
-              <img
-                src="./Images/Grand Canyon.jpg"
-                alt="Grand Canyon"
-                class="card__image"
-              />
-              <div class="card__content">
-                <p class="card__place">Grand Canyon</p>
-                <img
-                  src="./Images/Vector Like.svg"
-                  alt="vector Like"
-                  class="card__like"
-                />
-              </div>
-            </div>
-
-            <div class="card">
-              <!-- 4 -->
-              <img src="./Images/Zion.jpg" alt="Zion" class="card__image" />
-              <div class="card__content">
-                <p class="card__place">Zion</p>
-                <img
-                  src="./Images/Vector Like.svg"
-                  alt="vector Like"
-                  class="card__like"
-                />
-              </div>
-            </div>
-
-            <div class="card">
-              <!-- 5 -->
-              <img src="./Images/Acadia.jpg" alt="Acadia" class="card__image" />
-              <div class="card__content">
-                <p class="card__place">Acadia</p>
-                <img
-                  src="./Images/Vector Like.svg"
-                  alt="vector Like"
-                  class="card__like"
-                />
-              </div>
-            </div>
-
-            <div class="card">
-              <!-- 6 -->
-              <img
-                src="./Images/Yellowstone.jpg"
-                alt="Yellowstone"
-                class="card__image"
-              />
-              <div class="card__content">
-                <p class="card__place">Yellowstone</p>
-                <img
-                  src="./Images/Vector Like.svg"
-                  alt="vector Like"
-                  class="card__like"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+        <!-- POPUP AGREGAR LUGAR -->
+        <section></section>
       </main>
       <footer class="footer">&copy; 2021 Around The U.S.</footer>
+      <template id="card-template">
+        <div class="container">
+          <div class="card">
+            <img
+              src="./Images/Trash.svg"
+              alt="vector Trash"
+              class="card__trash"
+            />
+            <img
+              src="./Images/Grand Teton.jpg"
+              alt="Grand Teton"
+              class="card__image"
+            />
+            <div class="card__content">
+              <p class="card__place">Grand Teton</p>
+              <img
+                src="./Images/Vector Like.svg"
+                alt="vector Like"
+                class="card__like"
+              />
+            </div>
+          </div>
+        </div>
+      </template>
       <script src="./index.js"></script>
     </div>
   </body>

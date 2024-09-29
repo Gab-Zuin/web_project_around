@@ -32,3 +32,15 @@
 .popup__close:hover {
   opacity: 0.6;
 }
+
+.popup__image_I {
+  max-width: 433px;
+  max-height: 540px;
+  margin: 0 auto;
+}
+
+.popup__image_II {
+  max-width: 816px;
+  max-height: 540px;
+  margin: 0 auto;
+}

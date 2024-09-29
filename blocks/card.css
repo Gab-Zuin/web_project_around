@@ -34,3 +34,11 @@
   max-width: 21px;
   margin-left: 10px;
 }
+
+.card__trash {
+  max-width: 19px;
+  margin-top: 18px;
+  margin-left: 249px;
+  background-color: transparent;
+  position: absolute;
+}
