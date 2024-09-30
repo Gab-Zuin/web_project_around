@@ -7,9 +7,8 @@ const inputName = document.querySelector("#input_name");
 const inputAbout = document.querySelector("#input_about");
 const inputSubmit = document.querySelector(".form__submit");
 const formProfile = document.querySelector("#form__profile");
-const cardTemplate = document.querySelector("#card-template");
-const cardContainer = document.querySelector(".container");
-//const card = document.querySelector(".card");
+const cardTemplate = document.querySelector(".card__template").content;
+const container = document.querySelector(".container");
 const initialCards = [
   {
     name: "Valle de Yosemite",
@@ -37,6 +36,19 @@ const initialCards = [
   },
 ];
 
+function cardCreate(card) {
+  const newCard = cardTemplate.querySelector(".card").cloneNode(true);
+  const cardImage = newCard.querySelector(".card__image");
+  const cardName = newCard.querySelector(".card__place");
+  cardImage.src = card.link;
+  cardName.textContent = card.name;
+  container.append(newCard);
+}
+
+initialCards.forEach((card) => {
+  cardCreate(card);
+});
+
 profileButton.addEventListener("click", function () {
   popupProfile.classList.add("popup_opened");
 });
@@ -54,9 +66,4 @@ formProfile.addEventListener("submit", function (evt) {
 
 function closePopup() {
   popupProfile.classList.remove("popup_opened");
-}
-
-function createCard() {
-  const cardClone = cardTemplate.querySelector(".card").cloneNode(true);
-  cardContainer = append(cardClone);
 }
