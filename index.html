@@ -40,14 +40,14 @@
               <p class="profile__profession">Explorador</p>
             </div>
             <button class="profile__add-button">
-              <img src="./Images/Vector add.svg" alt="Boton editar" />
+              <img src="./Images/Vector add.svg" alt="Boton agregar" />
             </button>
           </div>
           <div class="container"></div>
         </section>
 
         <!-- POPUP EDITAR PERFIL -->
-        <div class="popup" id="">
+        <div class="popup" id="popup-edit-profile">
           <form class="popup__container" id="form__profile">
             <img
               src="./Images/Close Icon.svg"
@@ -78,6 +78,36 @@
           </form>
         </div>
         <!-- POPUP AGREGAR LUGAR -->
+        <div class="popup" id="popup-add-card">
+          <form class="popup__container" id="popup-form-card">
+            <img
+              src="./Images/Close Icon.svg"
+              alt="boton de cierre"
+              class="popup__close"
+            />
+            <fieldset class="form">
+              <h2 class="form__title">Nuevo Lugar</h2>
+
+              <input
+                type="text"
+                class="form__input form__input_title"
+                id="input_title"
+                name="title"
+                placeholder="Título"
+                required
+              />
+              <input
+                type="text"
+                class="form__input form__input_link"
+                id="input_link"
+                name="link"
+                placeholder="Enlace a la imagen"
+                required
+              />
+              <button class="form__submit" type="submit">Crear</button>
+            </fieldset>
+          </form>
+        </div>
         <section></section>
       </main>
       <footer class="footer">&copy; 2021 Around The U.S.</footer>

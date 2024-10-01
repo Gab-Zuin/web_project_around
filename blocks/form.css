@@ -20,7 +20,9 @@
 }
 
 .form__input_name,
-.form__input_about {
+.form__input_about,
+.form__input_title,
+.form__input_link {
   font-family: Inter;
   font-size: 14px;
   font-weight: 400;
