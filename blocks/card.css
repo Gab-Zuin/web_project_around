@@ -35,7 +35,21 @@
 
 .card__like {
   max-width: 21px;
+  max-height: 19px;
   margin-left: 10px;
+  cursor: pointer;
+  filter: grayscale(100%);
+}
+
+.card__like_active {
+  max-width: 21px;
+  margin-left: 10px;
+  filter: none;
+  color: black;
+}
+
+.card__like:hover {
+  opacity: 0.5;
 }
 
 .card__trash {
