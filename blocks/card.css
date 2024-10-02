@@ -34,18 +34,17 @@
 }
 
 .card__like {
-  max-width: 21px;
-  max-height: 19px;
+  width: 21px;
+  height: 19px;
   margin-left: 10px;
   cursor: pointer;
-  filter: grayscale(100%);
+  background-image: url(../Images/Vector_Like.svg);
 }
 
 .card__like_active {
-  max-width: 21px;
+  width: 21px;
   margin-left: 10px;
-  filter: none;
-  color: black;
+  background-image: url(../Images/Vector_Like_Active.svg);
 }
 
 .card__like:hover {
@@ -53,9 +52,9 @@
 }
 
 .card__trash {
-  max-width: 19px;
+  width: 19px;
   margin-top: 18px;
   margin-left: 249px;
-  background-color: transparent;
+  background-image: url(../Images/Trash.svg);
   position: absolute;
 }
