@@ -52,7 +52,8 @@
 }
 
 .card__trash {
-  width: 19px;
+  width: 18px;
+  height: 19px;
   margin-top: 18px;
   margin-left: 249px;
   background-image: url(../Images/Trash.svg);

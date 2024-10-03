@@ -64,7 +64,6 @@ formProfile.addEventListener("submit", function (evt) {
   closePopup();
 });
 
-// 1. Clonar Template y generar las seis tarjetas iniciales.
 function cardCreate(card) {
   const newCard = cardTemplate.querySelector(".card").cloneNode(true);
   const cardImage = newCard.querySelector(".card__image");
@@ -77,8 +76,8 @@ function cardCreate(card) {
     likeButton.classList.toggle("card__like_active");
   });
   const trashButton = newCard.querySelector(".card__trash");
-  trashButton.addEventListener("click", () => {
-    trashButton.classList.toggle("card__trash");
+  trashButton.addEventListener("click", function () {
+    newCard.remove();
   });
 }
 
