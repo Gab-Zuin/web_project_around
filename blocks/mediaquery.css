@@ -38,6 +38,11 @@
   .profile__profession {
     padding: 0 0 30px 0;
   }
+
+  .popup__image_expand {
+    max-width: 90vh;
+    margin-top: 30px;
+  }
 }
 
 @media all and (max-width: 500px) {
@@ -72,6 +77,7 @@
 
   .popup__container {
     max-width: 465px;
+    display: initial;
   }
 
   .popup_opened {
@@ -97,7 +103,7 @@
     width: 100%;
     max-height: 322px;
     padding: 0;
-    margin: 0 19px 0 19px;
+
     border: 0;
   }
 
