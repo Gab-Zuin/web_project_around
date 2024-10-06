@@ -15,31 +15,35 @@ const formTitle = document.querySelector("#input_title");
 const formLink = document.querySelector("#input_link");
 const formAddCard = document.querySelector("#popup-form-card");
 const popupCloseCard = formAddCard.querySelector(".popup__close");
+const popupImage = document.querySelector("#popup-image");
+const closePopupImage = popupImage.querySelector(".popup__close");
+const popupImagePhoto = popupImage.querySelector(".popup__image_expand");
+const popupImageTitle = popupImage.querySelector(".popup__image_title");
 
 const initialCards = [
   {
-    name: "Valle de Yosemite",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
+    name: "El Nido, Palawan, Philippines",
+    link: "https://images.unsplash.com/photo-1728042743634-9e7189add952?q=80&w=1975&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
-    name: "Lago Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg",
+    name: "Seceda, South Tyrol, Italy",
+    link: "https://images.unsplash.com/photo-1683899266164-219e1ebdf029?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
-    name: "Montañas Calvas",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg",
+    name: "Vik, Iceland",
+    link: "https://images.unsplash.com/photo-1723058852872-0e7ecaf4055d?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg",
+    name: "Lago di Braies, Prags, Italy",
+    link: "https://images.unsplash.com/photo-1727713144442-69f31f0510ba?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
-    name: "Parque Nacional de la Vanoise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg",
+    name: "Lower Antelope Canyon, Page, United States",
+    link: "https://images.unsplash.com/photo-1479030160180-b1860951d696?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
+    name: "Wānaka, New Zealand",
+    link: "https://images.unsplash.com/photo-1721020401359-d6e4f75c5a81?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 ];
 
@@ -64,6 +68,19 @@ formProfile.addEventListener("submit", function (evt) {
   closePopup();
 });
 
+//Open Popup Image Expandida
+function openPopupImage(link, title) {
+  popupImage.classList.add("popup_opened");
+  popupImagePhoto.src = link;
+  popupImageTitle.textContent = title;
+}
+
+function closeImagePopup() {
+  popupImage.classList.remove("popup_opened");
+}
+closePopupImage.addEventListener("click", closeImagePopup);
+
+//Creacion de Carta (Accion de Likea carta)(Accion de eliminar carta)(Despliague de Popup Imagen ampliada)
 function cardCreate(card) {
   const newCard = cardTemplate.querySelector(".card").cloneNode(true);
   const cardImage = newCard.querySelector(".card__image");
@@ -71,6 +88,10 @@ function cardCreate(card) {
   cardImage.src = card.link;
   cardName.textContent = card.name;
   container.prepend(newCard);
+  cardImage.addEventListener("click", function () {
+    openPopupImage(card.link, card.name); /*Apertura de Imagen Expandida*/
+  });
+
   const likeButton = newCard.querySelector(".card__like");
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like_active");

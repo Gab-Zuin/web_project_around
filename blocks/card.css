@@ -14,6 +14,24 @@
   aspect-ratio: 1/ 1;
 }
 
+.card__image_horizontal-popup {
+  max-width: 433px;
+  max-width: 540px;
+  width: 100%;
+  position: absolute;
+  z-index: 5;
+  margin: auto;
+}
+
+.card__image_vertical-popup {
+  max-width: 816px;
+  max-width: 540px;
+  position: absolute;
+  z-index: 5;
+  top: 90px;
+  left: 232px;
+}
+
 .card__content {
   display: flex;
   padding: 25px 15px 30px 20px;
@@ -22,6 +40,7 @@
 }
 
 .card__place {
+  max-width: 208px;
   font-family: Inter;
   font-size: 1.5rem;
   font-weight: 900;
