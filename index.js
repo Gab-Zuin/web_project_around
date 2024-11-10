@@ -59,6 +59,7 @@ function closePopup() {
 //Cierre Popup Boton de Editar
 popupClose.addEventListener("click", function () {
   closePopup();
+  document.removeEventListener("keydown", closeOnEsc);
 });
 //Llenado Popup Boton de Editar
 formProfile.addEventListener("submit", function (evt) {
@@ -74,9 +75,10 @@ function openPopupImage(link, title) {
   popupImagePhoto.src = link;
   popupImageTitle.textContent = title;
 }
-
+//Cierre de Imagen Expandida
 function closeImagePopup() {
   popupImage.classList.remove("popup_opened");
+  document.removeEventListener("keydown", closeOnEsc);
 }
 closePopupImage.addEventListener("click", closeImagePopup);
 
@@ -115,6 +117,7 @@ function openPopupCard() {
 //Cierre
 function closePopupCard() {
   popupForm.classList.remove("popup_opened");
+  document.removeEventListener("keydown", closeOnEsc);
 }
 
 addButton.addEventListener("click", openPopupCard);
@@ -128,3 +131,22 @@ formAddCard.addEventListener("submit", function (evt) {
 });
 
 popupCloseCard.addEventListener("click", closePopupCard);
+
+const closeOnEsc = (evt) => {
+  if (evt.key === "Escape") {
+    closePopup();
+    closePopupCard();
+    closeImagePopup();
+  }
+};
+
+document.addEventListener("click", function (evt) {
+  if (evt.target.classList.contains("popup_opened")) {
+    closePopup();
+    closePopupCard();
+    closeImagePopup();
+  }
+});
+
+document.addEventListener("keydown", closeOnEsc);
+document.removeEventListener("keydown", closeOnEsc);
