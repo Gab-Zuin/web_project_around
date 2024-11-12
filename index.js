@@ -1,3 +1,4 @@
+// Declaración de variables
 const profileButton = document.querySelector(".profile__edit-button");
 const popupProfile = document.querySelector("#popup-edit-profile");
 const popupClose = document.querySelector(".popup__close");
@@ -47,42 +48,34 @@ const initialCards = [
   },
 ];
 
-//Apertura Popup Boton de Editar
-profileButton.addEventListener("click", function () {
-  popupProfile.classList.add("popup_opened");
-});
-
-//Cierre cuando se llena Popup Boton de Editar
-function closePopup() {
-  popupProfile.classList.remove("popup_opened");
+// Funciones de manejo de popups
+function openPopup(popup) {
+  popup.classList.add("popup_opened");
+  document.addEventListener("keydown", closeOnEsc); // Agrega el event listener aquí
 }
-//Cierre Popup Boton de Editar
-popupClose.addEventListener("click", function () {
-  closePopup();
-  document.removeEventListener("keydown", closeOnEsc);
-});
-//Llenado Popup Boton de Editar
-formProfile.addEventListener("submit", function (evt) {
-  evt.preventDefault();
-  profileName.textContent = inputName.value;
-  profileProfession.textContent = inputAbout.value;
-  closePopup();
-});
 
-//Open Popup Image Expandida
+function closePopup(popup) {
+  popup.classList.remove("popup_opened");
+  document.removeEventListener("keydown", closeOnEsc); // Remueve el event listener aquí
+}
+
+// Cierre en Escape
+const closeOnEsc = (evt) => {
+  if (evt.key === "Escape") {
+    closePopup(popupProfile);
+    closePopup(popupForm);
+    closePopup(popupImage);
+  }
+};
+
+// Manejo específico de popups
 function openPopupImage(link, title) {
-  popupImage.classList.add("popup_opened");
   popupImagePhoto.src = link;
   popupImageTitle.textContent = title;
+  openPopup(popupImage);
 }
-//Cierre de Imagen Expandida
-function closeImagePopup() {
-  popupImage.classList.remove("popup_opened");
-  document.removeEventListener("keydown", closeOnEsc);
-}
-closePopupImage.addEventListener("click", closeImagePopup);
 
-//Creacion de Carta (Accion de Likea carta)(Accion de eliminar carta)(Despliague de Popup Imagen ampliada)
+// Funciones relacionadas con las tarjetas
 function cardCreate(card) {
   const newCard = cardTemplate.querySelector(".card").cloneNode(true);
   const cardImage = newCard.querySelector(".card__image");
@@ -90,63 +83,52 @@ function cardCreate(card) {
   cardImage.src = card.link;
   cardName.textContent = card.name;
   container.prepend(newCard);
-  cardImage.addEventListener("click", function () {
-    openPopupImage(card.link, card.name); /*Apertura de Imagen Expandida*/
-  });
 
+  // Evento para ampliar imagen
+  cardImage.addEventListener("click", () =>
+    openPopupImage(card.link, card.name)
+  );
+
+  // Evento para el botón de like
   const likeButton = newCard.querySelector(".card__like");
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like_active");
-  });
+  likeButton.addEventListener("click", () =>
+    likeButton.classList.toggle("card__like_active")
+  );
+
+  // Evento para el botón de borrar
   const trashButton = newCard.querySelector(".card__trash");
-  trashButton.addEventListener("click", function () {
-    newCard.remove();
-  });
+  trashButton.addEventListener("click", () => newCard.remove());
 }
 
-initialCards.forEach((card) => {
-  cardCreate(card);
+// Creación de las tarjetas iniciales
+initialCards.forEach((card) => cardCreate(card));
+
+// Eventos de apertura y cierre de popups
+profileButton.addEventListener("click", () => openPopup(popupProfile));
+popupClose.addEventListener("click", () => closePopup(popupProfile));
+
+formProfile.addEventListener("submit", function (evt) {
+  evt.preventDefault();
+  profileName.textContent = inputName.value;
+  profileProfession.textContent = inputAbout.value;
+  closePopup(popupProfile);
 });
 
-//2. Formulario para añadir una tarjeta.
-
-//Apertura
-function openPopupCard() {
-  popupForm.classList.add("popup_opened");
-}
-//Cierre
-function closePopupCard() {
-  popupForm.classList.remove("popup_opened");
-  document.removeEventListener("keydown", closeOnEsc);
-}
-
-addButton.addEventListener("click", openPopupCard);
-
-//Envio
+addButton.addEventListener("click", () => openPopup(popupForm));
+popupCloseCard.addEventListener("click", () => closePopup(popupForm));
 
 formAddCard.addEventListener("submit", function (evt) {
   evt.preventDefault();
   cardCreate({ name: formTitle.value, link: formLink.value });
-  closePopupCard();
+  closePopup(popupForm);
 });
 
-popupCloseCard.addEventListener("click", closePopupCard);
-
-const closeOnEsc = (evt) => {
-  if (evt.key === "Escape") {
-    closePopup();
-    closePopupCard();
-    closeImagePopup();
-  }
-};
+closePopupImage.addEventListener("click", () => closePopup(popupImage));
 
 document.addEventListener("click", function (evt) {
   if (evt.target.classList.contains("popup_opened")) {
-    closePopup();
-    closePopupCard();
-    closeImagePopup();
+    closePopup(popupProfile);
+    closePopup(popupForm);
+    closePopup(popupImage);
   }
 });
-
-document.addEventListener("keydown", closeOnEsc);
-document.removeEventListener("keydown", closeOnEsc);
