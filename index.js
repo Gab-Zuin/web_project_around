@@ -1,4 +1,3 @@
-// Declaración de variables
 const profileButton = document.querySelector(".profile__edit-button");
 const popupProfile = document.querySelector("#popup-edit-profile");
 const popupClose = document.querySelector(".popup__close");
@@ -48,34 +47,44 @@ const initialCards = [
   },
 ];
 
-// Funciones de manejo de popups
-function openPopup(popup) {
-  popup.classList.add("popup_opened");
-  document.addEventListener("keydown", closeOnEsc); // Agrega el event listener aquí
+//Apertura Popup Boton de Editar
+profileButton.addEventListener("click", function () {
+  popupProfile.classList.add("popup_opened");
+  document.addEventListener("keydown", closeOnEsc);
+});
+
+//Cierre cuando se llena Popup Boton de Editar
+function closePopup() {
+  popupProfile.classList.remove("popup_opened");
+  document.removeEventListener("keydown", closeOnEsc);
 }
+//Cierre Popup Boton de Editar
+popupClose.addEventListener("click", function () {
+  closePopup();
+});
+//Llenado Popup Boton de Editar
+formProfile.addEventListener("submit", function (evt) {
+  evt.preventDefault();
+  profileName.textContent = inputName.value;
+  profileProfession.textContent = inputAbout.value;
+  closePopup();
+});
 
-function closePopup(popup) {
-  popup.classList.remove("popup_opened");
-  document.removeEventListener("keydown", closeOnEsc); // Remueve el event listener aquí
-}
-
-// Cierre en Escape
-const closeOnEsc = (evt) => {
-  if (evt.key === "Escape") {
-    closePopup(popupProfile);
-    closePopup(popupForm);
-    closePopup(popupImage);
-  }
-};
-
-// Manejo específico de popups
+//Open Popup Image Expandida
 function openPopupImage(link, title) {
+  popupImage.classList.add("popup_opened");
   popupImagePhoto.src = link;
   popupImageTitle.textContent = title;
-  openPopup(popupImage);
+  document.addEventListener("keydown", closeOnEsc);
 }
+//Cierre de Imagen Expandida
+function closeImagePopup() {
+  popupImage.classList.remove("popup_opened");
+  document.removeEventListener("keydown", closeOnEsc);
+}
+closePopupImage.addEventListener("click", closeImagePopup);
 
-// Funciones relacionadas con las tarjetas
+//Creacion de Carta (Accion de Likea carta)(Accion de eliminar carta)(Despliague de Popup Imagen ampliada)
 function cardCreate(card) {
   const newCard = cardTemplate.querySelector(".card").cloneNode(true);
   const cardImage = newCard.querySelector(".card__image");
@@ -83,52 +92,62 @@ function cardCreate(card) {
   cardImage.src = card.link;
   cardName.textContent = card.name;
   container.prepend(newCard);
+  cardImage.addEventListener("click", function () {
+    openPopupImage(card.link, card.name); /*Apertura de Imagen Expandida*/
+  });
 
-  // Evento para ampliar imagen
-  cardImage.addEventListener("click", () =>
-    openPopupImage(card.link, card.name)
-  );
-
-  // Evento para el botón de like
   const likeButton = newCard.querySelector(".card__like");
-  likeButton.addEventListener("click", () =>
-    likeButton.classList.toggle("card__like_active")
-  );
-
-  // Evento para el botón de borrar
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("card__like_active");
+  });
   const trashButton = newCard.querySelector(".card__trash");
-  trashButton.addEventListener("click", () => newCard.remove());
+  trashButton.addEventListener("click", function () {
+    newCard.remove();
+  });
 }
 
-// Creación de las tarjetas iniciales
-initialCards.forEach((card) => cardCreate(card));
-
-// Eventos de apertura y cierre de popups
-profileButton.addEventListener("click", () => openPopup(popupProfile));
-popupClose.addEventListener("click", () => closePopup(popupProfile));
-
-formProfile.addEventListener("submit", function (evt) {
-  evt.preventDefault();
-  profileName.textContent = inputName.value;
-  profileProfession.textContent = inputAbout.value;
-  closePopup(popupProfile);
+initialCards.forEach((card) => {
+  cardCreate(card);
 });
 
-addButton.addEventListener("click", () => openPopup(popupForm));
-popupCloseCard.addEventListener("click", () => closePopup(popupForm));
+//2. Formulario para añadir una tarjeta.
+
+//Apertura
+function openPopupCard() {
+  popupForm.classList.add("popup_opened");
+  document.addEventListener("keydown", closeOnEsc);
+}
+//Cierre
+function closePopupCard() {
+  popupForm.classList.remove("popup_opened");
+  document.removeEventListener("keydown", closeOnEsc);
+}
+
+addButton.addEventListener("click", openPopupCard);
+
+//Envio
 
 formAddCard.addEventListener("submit", function (evt) {
   evt.preventDefault();
   cardCreate({ name: formTitle.value, link: formLink.value });
-  closePopup(popupForm);
+  closePopupCard();
 });
 
-closePopupImage.addEventListener("click", () => closePopup(popupImage));
+popupCloseCard.addEventListener("click", closePopupCard);
+
+const closeOnEsc = (evt) => {
+  if (evt.key === "Escape") {
+    closePopup();
+    closePopupCard();
+    closeImagePopup();
+  }
+};
 
 document.addEventListener("click", function (evt) {
-  if (evt.target.classList.contains("popup_opened")) {
-    closePopup(popupProfile);
-    closePopup(popupForm);
-    closePopup(popupImage);
+  if (
+    evt.target.classList.contains("popup") &&
+    evt.target.classList.contains("popup_opened")
+  ) {
+    closePopup(evt.target);
   }
 });
