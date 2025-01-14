@@ -96,7 +96,7 @@ function cardCreate(card) {
     openPopupImage(card.link, card.name); /*Apertura de Imagen Expandida*/
   });
 
-  const likeButton = newCard.querySelector(".card__like");
+  const likeButton = newCard.querySelector(".card__like"); // aqui se cambia a this.... y despues se empieza a importar
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like_active");
   });
