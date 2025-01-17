@@ -1,6 +1,11 @@
-import Card from "./Card";
-import FormValidator from "./FormValidator";
-
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+import {
+  popupImage,
+  openPopupProfile,
+  popupClose,
+  formAddCard,
+} from "./utils.js";
 const profileButton = document.querySelector(".profile__edit-button");
 const profileName = document.querySelector(".profile__name");
 const profileProfession = document.querySelector(".profile__profession");
@@ -10,19 +15,10 @@ const inputSubmit = document.querySelector(".form__submit");
 const formProfile = document.querySelector("#form__profile");
 const cardTemplate = document.querySelector(".card__template").content;
 const container = document.querySelector(".container");
-const addButton = document.querySelector(".profile__add-button");
 const formTitle = document.querySelector("#input_title");
 const formLink = document.querySelector("#input_link");
-const formAddCard = document.querySelector("#popup-form-card");
-const popupCloseCard = formAddCard.querySelector(".popup__close");
-const closePopupImage = popupImage.querySelector(".popup__close");
 const popupImagePhoto = popupImage.querySelector(".popup__image_expand");
 const popupImageTitle = popupImage.querySelector(".popup__image_title");
-const popupForm = document.querySelector("#popup-add-card");
-const popupProfile = document.querySelector("#popup-edit-profile");
-const popupClose = document.querySelector(".popup__close");
-const popupImage = document.querySelector("#popup-image");
-
 const initialCards = [
   {
     name: "Valle de Yosemite",
@@ -116,15 +112,14 @@ document.addEventListener("click", function (evt) {
   }
 });
 
-enableValidation({
+const settings = {
   formSelector: ".popup__container",
   inputSelector: ".form__input",
   submitButtonSelector: ".form__submit",
   inactiveButtonClass: "form__submit_disabled",
   inputErrorClass: "form__input_type_error",
   errorClass: "form__error_visible",
-});
+};
 
 const validationProfile = new FormValidator(formProfile, settings);
 validationProfile.enableValidation();
-console.log(validationProfile);

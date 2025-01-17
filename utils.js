@@ -1,5 +1,14 @@
+export const popupImage = document.querySelector("#popup-image");
+const popupForm = document.querySelector("#popup-add-card");
+const popupProfile = document.querySelector("#popup-edit-profile");
+export const popupClose = document.querySelector(".popup__close");
+const closePopupImage = popupImage.querySelector(".popup__close");
+const addButton = document.querySelector(".profile__add-button");
+export const formAddCard = document.querySelector("#popup-form-card");
+const popupCloseCard = formAddCard.querySelector(".popup__close");
+
 //Apertura Popup Boton de Editar
-function openPopupProfile() {
+export function openPopupProfile() {
   popupProfile.classList.add("popup_opened");
   document.addEventListener("keydown", closeOnEsc);
 }

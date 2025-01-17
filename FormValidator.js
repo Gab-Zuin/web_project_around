@@ -27,8 +27,8 @@ export default class FormValidator {
   }
   hasInvalidInput() {}
   setEventListeners() {
-    this.inputList = Array.from(
-      this.formElement.querySelectorAll(this.settings)
+    this.imputList = Array.from(
+      this.formElement.querySelectorAll(this.settings.formSelector)
     );
     this.imputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
