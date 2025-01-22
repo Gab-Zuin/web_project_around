@@ -46,7 +46,7 @@ const initialCards = [
   },
 ];
 
-profileButton.addEventListener("click", openPopupProfile);
+profileButton.addEventListener("click", openPopupProfile); //Este es un evento
 
 //Llenado Popup Boton de Editar
 formProfile.addEventListener("submit", function (evt) {
@@ -73,7 +73,7 @@ function cardCreate(card) {
     openPopupImage(card.link, card.name); /*Apertura de Imagen Expandida*/
   });
 
-  const likeButton = newCard.querySelector(".card__like"); // aqui se cambia a this.... y despues se empieza a importar
+  const likeButton = newCard.querySelector(".card__like");
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like_active");
   });
@@ -102,6 +102,14 @@ const closeOnEsc = (evt) => {
     closeImagePopup();
   }
 };
+
+document.addEventListener("click", function (evt) {
+  if (evt.target.classList.contains("popup_opened")) {
+    closePopup();
+    closePopupCard();
+    closeImagePopup();
+  }
+});
 
 document.addEventListener("click", function (evt) {
   if (
