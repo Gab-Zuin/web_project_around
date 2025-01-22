@@ -25,19 +25,20 @@ export default class FormValidator {
       this.hideInputError(inputElement);
     }
   }
-  hasInvalidInput() {}
+  toggleButtonState() {}
+
   setEventListeners() {
-    this.imputList = Array.from(
-      this.formElement.querySelectorAll(this.settings.formSelector)
+    this.inputList = Array.from(
+      this.formElement.querySelectorAll(this.settings.inputSelector)
     );
-    this.imputList.forEach((inputElement) => {
+    this.inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
         this.checkInputValidity(inputElement);
         this.toggleButtonState(inputElement);
       });
     });
   }
-  toggleButtonState() {}
+
   enableValidation() {
     this.formElement.addEventListener("submit", (evt) => {
       evt.preventDefuault();

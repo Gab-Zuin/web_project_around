@@ -9,7 +9,9 @@ import {
   formAddCard,
   closePopup,
   openPopupImage,
+  closeImagePopup,
 } from "./utils.js";
+
 const profileButton = document.querySelector(".profile__edit-button");
 const profileName = document.querySelector(".profile__name");
 const profileProfession = document.querySelector(".profile__profession");
@@ -26,7 +28,7 @@ const popupImageTitle = popupImage.querySelector(".popup__image_title");
 const initialCards = [
   {
     name: "Valle de Yosemite",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
   },
   {
     name: "Lago Louise",
@@ -67,7 +69,7 @@ popupClose.addEventListener("click", function () {
 
 //Creacion de Carta (Accion de Likea carta)(Accion de eliminar carta)(Despliague de Popup Imagen ampliada)
 function cardCreate(card) {
-  const newCard = cardTemplate.querySelector(".card").cloneNode(true);
+  const newCard = cardTemplate.querySelector(".card").cloneNode(true); //como puedo hacer independietes estas funciones?, se supone que la creacion de la carta ya se encuentra en la clase Card.js
   const cardImage = newCard.querySelector(".card__image");
   const cardName = newCard.querySelector(".card__place");
   cardImage.src = card.link;
@@ -116,14 +118,17 @@ document.addEventListener("click", function (evt) {
   }
 });
 
-const settings = {
-  formSelector: ".popup__container",
+// Configuración de validación
+const validationSettings = {
   inputSelector: ".form__input",
   submitButtonSelector: ".form__submit",
   inactiveButtonClass: "form__submit_disabled",
   inputErrorClass: "form__input_type_error",
-  errorClass: "form__error_visible",
+  errorClass: "form__input-error_active",
 };
 
-const validationProfile = new FormValidator(formProfile, settings);
-validationProfile.enableValidation();
+const profileFormValidator = new FormValidator(formProfile, validationSettings);
+profileFormValidator.enableValidation();
+
+const cardFormValidator = new FormValidator(formAddCard, validationSettings);
+cardFormValidator.enableValidation();

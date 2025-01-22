@@ -27,7 +27,7 @@ export function openPopupImage(link, title) {
   document.addEventListener("keydown", closeOnEsc);
 }
 //Cierre de Imagen Expandida
-function closeImagePopup() {
+export function closeImagePopup() {
   popupImage.classList.remove("popup_opened");
   document.removeEventListener("keydown", closeOnEsc);
 }
