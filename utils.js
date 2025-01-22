@@ -1,5 +1,3 @@
-/*Index.js se debe encargar de los eventos y la cracion de los elementos con las clases*/
-
 export const popupImage = document.querySelector("#popup-image");
 const popupForm = document.querySelector("#popup-add-card");
 const popupProfile = document.querySelector("#popup-edit-profile");
@@ -16,13 +14,13 @@ export function openPopupProfile() {
 }
 
 //Cierre cuando se llena Popup Boton de Editar
-function closePopupProfile() {
+export function closePopup() {
   popupProfile.classList.remove("popup_opened");
   //document.removeEventListener("keydown", closeOnEsc); Revisar si va o no
 }
 
 //Open Popup Image Expandida
-function openPopupImage(link, title) {
+export function openPopupImage(link, title) {
   popupImage.classList.add("popup_opened");
   popupImagePhoto.src = link;
   popupImageTitle.textContent = title;
@@ -49,3 +47,11 @@ function closePopupCard() {
 addButton.addEventListener("click", openPopupCard); //este va en index.js
 
 popupCloseCard.addEventListener("click", closePopupCard);
+
+const closeOnEsc = (evt) => {
+  if (evt.key === "Escape") {
+    closePopup();
+    closePopupCard();
+    closeImagePopup();
+  }
+};

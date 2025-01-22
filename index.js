@@ -1,3 +1,5 @@
+/*Index.js se debe encargar de los eventos y la creacion de los elementos con las clases*/
+
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
 import {
@@ -5,6 +7,8 @@ import {
   openPopupProfile,
   popupClose,
   formAddCard,
+  closePopup,
+  openPopupImage,
 } from "./utils.js";
 const profileButton = document.querySelector(".profile__edit-button");
 const profileName = document.querySelector(".profile__name");
@@ -94,14 +98,6 @@ formAddCard.addEventListener("submit", function (evt) {
   cardCreate({ name: formTitle.value, link: formLink.value });
   closePopupCard();
 });
-
-const closeOnEsc = (evt) => {
-  if (evt.key === "Escape") {
-    closePopup();
-    closePopupCard();
-    closeImagePopup();
-  }
-};
 
 document.addEventListener("click", function (evt) {
   if (evt.target.classList.contains("popup_opened")) {
