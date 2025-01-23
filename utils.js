@@ -16,7 +16,6 @@ export function openPopupProfile() {
 //Cierre cuando se llena Popup Boton de Editar
 export function closePopup() {
   popupProfile.classList.remove("popup_opened");
-  //document.removeEventListener("keydown", closeOnEsc); Revisar si va o no
 }
 
 //Open Popup Image Expandida
@@ -33,13 +32,13 @@ export function closeImagePopup() {
 }
 closePopupImage.addEventListener("click", closeImagePopup);
 
-//Apertura a
+//Apertura card
 function openPopupCard() {
   popupForm.classList.add("popup_opened");
   document.addEventListener("keydown", closeOnEsc);
 }
-//Cierre a
-function closePopupCard() {
+//Cierre card
+export function closePopupCard() {
   popupForm.classList.remove("popup_opened");
   document.removeEventListener("keydown", closeOnEsc);
 }

@@ -10,6 +10,7 @@ import {
   closePopup,
   openPopupImage,
   closeImagePopup,
+  closePopupCard,
 } from "./utils.js";
 
 const profileButton = document.querySelector(".profile__edit-button");
