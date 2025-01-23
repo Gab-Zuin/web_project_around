@@ -24,8 +24,7 @@ const cardTemplate = document.querySelector(".card__template").content;
 const container = document.querySelector(".container");
 const formTitle = document.querySelector("#input_title");
 const formLink = document.querySelector("#input_link");
-const popupImagePhoto = popupImage.querySelector(".popup__image_expand");
-const popupImageTitle = popupImage.querySelector(".popup__image_title");
+
 const initialCards = [
   {
     name: "Valle de Yosemite",

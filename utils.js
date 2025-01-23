@@ -6,6 +6,8 @@ const closePopupImage = popupImage.querySelector(".popup__close");
 const addButton = document.querySelector(".profile__add-button");
 export const formAddCard = document.querySelector("#popup-form-card");
 const popupCloseCard = formAddCard.querySelector(".popup__close");
+const popupImagePhoto = popupImage.querySelector(".popup__image_expand");
+const popupImageTitle = popupImage.querySelector(".popup__image_title");
 
 //Apertura Popup Boton de Editar
 export function openPopupProfile() {
