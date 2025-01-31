@@ -44,3 +44,21 @@ export default class Card {
     return this.htmlCard;
   }
 }
+
+
+/*
+export default class Card{
+constructor(name, link, cardSelector){
+    this._name = name;
+    this._link = link;
+    this._cardSelector = cardSelector;
+}
+    
+getTemplate() {
+    return cardTemplate.querySelector(".card").cloneNode(true);
+
+_setEventListeners(){
+this._handleImageClick()
+this._handleLikeButton()
+this._handleDeleteButton()
+}
