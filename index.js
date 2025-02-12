@@ -3,7 +3,6 @@
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
 import {
-  popupImage,
   openPopupProfile,
   popupClose,
   formAddCard,
@@ -24,6 +23,10 @@ const cardTemplate = document.querySelector(".card__template").content;
 const container = document.querySelector(".container");
 const formTitle = document.querySelector("#input_title");
 const formLink = document.querySelector("#input_link");
+const cardArea = document.querySelector(".");
+const popupProfile = new Popup("#popup-edit-profile");
+const popupCard = new Popup("#popup-add-card");
+const popupImage = new Popup("#popup-image");
 
 const initialCards = [
   {
@@ -53,6 +56,11 @@ const initialCards = [
 ];
 
 profileButton.addEventListener("click", openPopupProfile); //Este es un evento
+
+initialCards.forEach(function (item) {
+  const newCard = new Card(item.name, item.link);
+  container.append(newCard.getCard());
+});
 
 //Llenado Popup Boton de Editar
 formProfile.addEventListener("submit", function (evt) {

@@ -15,7 +15,7 @@ export function openPopupProfile() {
   document.addEventListener("keydown", closeOnEsc);
 }
 
-//Cierre cuando se llena Popup Boton de Editar
+//Cierre Popup Boton de Editar
 export function closePopup() {
   popupProfile.classList.remove("popup_opened");
 }
@@ -27,7 +27,7 @@ export function openPopupImage(link, title) {
   popupImageTitle.textContent = title;
   document.addEventListener("keydown", closeOnEsc);
 }
-//Cierre de Imagen Expandida
+//Cierre Popup  Imagen Expandida
 export function closeImagePopup() {
   popupImage.classList.remove("popup_opened");
   document.removeEventListener("keydown", closeOnEsc);
@@ -44,15 +44,3 @@ export function closePopupCard() {
   popupForm.classList.remove("popup_opened");
   document.removeEventListener("keydown", closeOnEsc);
 }
-
-addButton.addEventListener("click", openPopupCard); //este va en index.js
-
-popupCloseCard.addEventListener("click", closePopupCard);
-
-const closeOnEsc = (evt) => {
-  if (evt.key === "Escape") {
-    closePopup();
-    closePopupCard();
-    closeImagePopup();
-  }
-};
