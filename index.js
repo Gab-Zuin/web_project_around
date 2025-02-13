@@ -12,6 +12,8 @@ import {
   closePopupCard,
 } from "./utils.js";
 
+import PopupWithForm from "./PopupWithForm.js";
+import PopupWithImage from "./PopupWithImage.js";
 const profileButton = document.querySelector(".profile__edit-button");
 const profileName = document.querySelector(".profile__name");
 const profileProfession = document.querySelector(".profile__profession");
@@ -24,9 +26,9 @@ const container = document.querySelector(".container");
 const formTitle = document.querySelector("#input_title");
 const formLink = document.querySelector("#input_link");
 const cardArea = document.querySelector(".");
-const popupProfile = new Popup("#popup-edit-profile");
-const popupCard = new Popup("#popup-add-card");
-const popupImage = new Popup("#popup-image");
+const popupProfile = new PopupWithForm("#popup-edit-profile");
+const popupCard = new PopupWithForm("#popup-add-card");
+const popupImage = new PopupWithImage("#popup-image");
 
 const initialCards = [
   {
