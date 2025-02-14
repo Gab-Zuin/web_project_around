@@ -1,8 +1,9 @@
 const cardTemplate = document.querySelector(".card__template").content;
 
 export default class Card {
-  constructor(link, name) {
+  constructor(link, name, handleClickImage) {
     (this._link = link), (this._name = name);
+    this.handleClickImage = handleClickImage;
   }
   getCard() {
     const newCard = cardTemplate.querySelector(".card").cloneNode(true);
@@ -22,6 +23,9 @@ export default class Card {
     });
     this.cardTrashButton.addEventListener("click", () => {
       this.removeCard();
+    });
+    this.cardImage.addEventListener("click", () => {
+      this.handleClickImage();
     });
   }
 

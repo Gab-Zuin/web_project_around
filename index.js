@@ -2,6 +2,7 @@
 
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
+import PopupWithImage from "./PopupWithImage.js";
 import {
   openPopupProfile,
   popupClose,
@@ -58,7 +59,9 @@ const initialCards = [
 profileButton.addEventListener("click", openPopupProfile);
 
 initialCards.forEach(function (item) {
-  const newCard = new Card(item.link, item.name);
+  const newCard = new Card(item.link, item.name, () => {
+    PopupWithImage.open(item.name, item.link);
+  });
   container.append(newCard.getCard());
 });
 
@@ -105,8 +108,12 @@ initialCards.forEach((card) => {
 
 formAddCard.addEventListener("submit", function (evt) {
   evt.preventDefault();
-  cardCreate({ name: formTitle.value, link: formLink.value });
-  closePopupCard();
+  const newCard = newCard(inputCardTitle.value, inputCardLink.value, () => {
+    PopupWithImage.open(item.name, item.link);
+  });
+  container.prepend(newCard.getCard());
+  /*cardCreate({ name: formTitle.value, link: formLink.value });
+  closePopupCard();*/
 });
 
 document.addEventListener("click", function (evt) {
