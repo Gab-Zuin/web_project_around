@@ -12,23 +12,21 @@ import {
   closePopupCard,
 } from "./utils.js";
 
-import PopupWithForm from "./PopupWithForm.js";
-import PopupWithImage from "./PopupWithImage.js";
+//import PopupWithForm from "./PopupWithForm.js";
+//import PopupWithImage from "./PopupWithImage.js";
 const profileButton = document.querySelector(".profile__edit-button");
 const profileName = document.querySelector(".profile__name");
 const profileProfession = document.querySelector(".profile__profession");
 const inputName = document.querySelector("#input_name");
 const inputAbout = document.querySelector("#input_about");
-const inputSubmit = document.querySelector(".form__submit");
 const formProfile = document.querySelector("#form__profile");
 const cardTemplate = document.querySelector(".card__template").content;
 const container = document.querySelector(".container");
 const formTitle = document.querySelector("#input_title");
 const formLink = document.querySelector("#input_link");
-const cardArea = document.querySelector(".");
-const popupProfile = new PopupWithForm("#popup-edit-profile");
-const popupCard = new PopupWithForm("#popup-add-card");
-const popupImage = new PopupWithImage("#popup-image");
+//const popupProfile = new PopupWithForm("#popup-edit-profile");
+//const popupCard = new PopupWithForm("#popup-add-card");
+//const popupImage = new PopupWithImage("#popup-image");
 
 const initialCards = [
   {
@@ -57,10 +55,10 @@ const initialCards = [
   },
 ];
 
-profileButton.addEventListener("click", openPopupProfile); //Este es un evento
+profileButton.addEventListener("click", openPopupProfile);
 
 initialCards.forEach(function (item) {
-  const newCard = new Card(item.name, item.link);
+  const newCard = new Card(item.link, item.name);
   container.append(newCard.getCard());
 });
 
@@ -79,14 +77,14 @@ popupClose.addEventListener("click", function () {
 
 //Creacion de Carta (Accion de Likea carta)(Accion de eliminar carta)(Despliague de Popup Imagen ampliada)
 function cardCreate(card) {
-  const newCard = cardTemplate.querySelector(".card").cloneNode(true); //como puedo hacer independietes estas funciones?, se supone que la creacion de la carta ya se encuentra en la clase Card.js
+  const newCard = cardTemplate.querySelector(".card").cloneNode(true);
   const cardImage = newCard.querySelector(".card__image");
   const cardName = newCard.querySelector(".card__place");
   cardImage.src = card.link;
   cardName.textContent = card.name;
   container.prepend(newCard);
   cardImage.addEventListener("click", function () {
-    openPopupImage(card.link, card.name); /*Apertura de Imagen Expandida*/
+    openPopupImage(card.link, card.name);
   });
 
   const likeButton = newCard.querySelector(".card__like");

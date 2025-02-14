@@ -4,15 +4,12 @@ export default class Card {
   constructor(link, name) {
     (this._link = link), (this._name = name);
   }
-  getTemplate() {
-    /* const newCard = cardTemplate.querySelector(".card").cloneNode(true);*/
-    return cardTemplate.querySelector(".card").cloneNode(true);
+  getCard() {
+    const newCard = cardTemplate.querySelector(".card").cloneNode(true);
   }
 
   toggleLike() {
-    this.cardLikeButton.classList.toggle(
-      "card__like_active"
-    ); /* likeButton.classList.toggle("card__like_active");*/
+    this.cardLikeButton.classList.toggle("card__like_active");
   }
 
   removeCard() {
