@@ -1,12 +1,28 @@
 const cardTemplate = document.querySelector(".card__template").content;
 
 export default class Card {
-  constructor(link, name, handleClickImage) {
+  constructor(link, name, handleClickImage, cardSelector) {
     (this._link = link), (this._name = name);
     this.handleClickImage = handleClickImage;
+    this.cardSelector = cardSelector;
   }
-  getCard() {
-    const newCard = cardTemplate.querySelector(".card").cloneNode(true);
+  _getTemplate() {
+    const cardTemplate = document.querySelector(this.cardSelector).content;
+    console.log(cardTemplate);
+    cardTemplate.querySelector(".card").cloneNode(true);
+    return cardTemplate;
+  }
+
+  setEventListeners() {
+    this._handlerLikeClick.addEventListener("click", () => {
+      this.toggleLike();
+    });
+    this._handlerDeleteClick.addEventListener("click", () => {
+      this.removeCard();
+    });
+    this._handlerImageClick.addEventListener("click", () => {
+      this.handleClickImage(this._link, this._name);
+    });
   }
 
   toggleLike() {
@@ -14,32 +30,33 @@ export default class Card {
   }
 
   removeCard() {
-    this.htmlCard.remove();
+    this._element.remove();
   }
 
-  setEventListeners() {
-    this.cardLikeButton.addEventListener("click", () => {
-      this.toggleLike();
-    });
-    this.cardTrashButton.addEventListener("click", () => {
-      this.removeCard();
-    });
-    this.cardImage.addEventListener("click", () => {
-      this.handleClickImage();
-    });
-  }
+  /*getVier() {
+    this._element = this._getTemplate();
+    this._handlerImageClick = this._element.querySelector(".card__image");
+    this._handlerLikeClick = this._element.querySelector(".card__like");
+    this._handlerDeleteClick = this._element.querySelector(".card__trash");
+    this._element.querySelector(".card__place").textContent = this._name;
+    this.handlerImageClick.src = this._link;
+    this.handlerImageClick.alt = this._name;
+    this.setEventListeners();
+    return this._element;
+  }*/
 
   setProperties() {
-    this.htmlCard = this.getTemplate();
-    this.cardImage = this.htmlCard.querySelector(".card__image");
-    this.cardTitle = this.htmlCard.querySelector(".card__title");
-    this.cardLikeButton = this.htmlCard.querySelector(".card__like");
-    this.cardTrashButton = this.htmlCard.querySelector(".card__trash");
-    this.cardTitle.textContent = this._name;
-    this.cardImage.src = this._link;
+    this._htmlCard = this._getTemplate();
+    console.log(this._htmlCard);
+    this._cardImage = this._htmlCard.querySelector(".card__image");
+    this._cardTitle = this._htmlCard.querySelector(".card__place");
+    this._cardLikeButton = this._htmlCard.querySelector(".card__like");
+    this._cardTrashButton = this._htmlCard.querySelector(".card__trash");
+    this._cardTitle.textContent = this._name;
+    this._cardImage.src = this._link;
   }
 
-  setCard() {
+  getCard() {
     this.setProperties();
     this.setEventListeners();
     return this.htmlCard;

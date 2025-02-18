@@ -1,3 +1,5 @@
+//Responsables de selectores y cosas fijas
+
 export const popupImage = document.querySelector("#popup-image");
 const popupForm = document.querySelector("#popup-add-card");
 const popupProfile = document.querySelector("#popup-edit-profile");
@@ -43,4 +45,12 @@ function openPopupCard() {
 export function closePopupCard() {
   popupForm.classList.remove("popup_opened");
   document.removeEventListener("keydown", closeOnEsc);
+}
+
+function closeOnEsc(evt) {
+  if (evt.key === "Escape") {
+    closePopup();
+    closeImagePopup();
+    closePopupCard();
+  }
 }
