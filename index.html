@@ -29,6 +29,7 @@
               src="./Images/Avatar.jpg"
               alt="Avatar profile"
               class="profile__avatar"
+              profile__edit-button
             />
             <div class="profile__info">
               <div class="profile__content">
@@ -46,17 +47,18 @@
           <div class="container"></div>
         </section>
 
-        <!-- POPUP EDITAR PERFIL -->
+        <!-- POPUP PROFILE -->
         <div class="popup" id="popup-edit-profile">
           <form class="popup__container" id="form__profile">
-            <img
-              src="./Images/Close Icon.svg"
-              alt="boton de cierre"
-              class="popup__close"
-            />
-            <fieldset class="form">
+            <button class="popup__close" id="popup-close-edit-profile">
+              <img
+                src="./Images/Close Icon.svg"
+                alt="boton de cierre"
+                class="popup__close"
+              />
+            </button>
+            <form class="form">
               <h2 class="form__title">Editar perfil</h2>
-
               <input
                 type="text"
                 class="form__input form__input_name"
@@ -80,18 +82,20 @@
               />
               <span class="form__input_type_error input_about-error"></span>
               <button class="form__submit" type="submit">Guardar</button>
-            </fieldset>
+            </form>
           </form>
         </div>
         <!-- POPUP AGREGAR CARTA -->
         <div class="popup" id="popup-add-card">
           <form class="popup__container" id="popup-form-card">
-            <img
-              src="./Images/Close Icon.svg"
-              alt="boton de cierre"
-              class="popup__close"
-            />
-            <fieldset class="form">
+            <button class="popup__close" id="popup-close-add-cards">
+              <img
+                src="./Images/Close Icon.svg"
+                alt="boton de cierre"
+                class="popup__close"
+              />
+            </button>
+            <form class="form">
               <h2 class="form__title">Nuevo lugar</h2>
 
               <input
@@ -115,41 +119,46 @@
               />
               <span class="form__input_type_error input_link-error"></span>
               <button class="form__submit" type="submit">Crear</button>
-            </fieldset>
+            </form>
           </form>
         </div>
         <!-- POPUP AMPLIAR IMAGEN DE LA CARTA -->
         <div class="popup" id="popup-image">
           <div class="popup__container_image" id="popup-container-image">
             <div class="popup__align">
-              <img
-                src="./Images/Close Icon.svg"
-                alt="boton de cierre"
-                class="popup__close popup__close-image"
-              />
+              <button class="popup__close" id="popup-close-image">
+                <img
+                  src="./Images/Close Icon.svg"
+                  alt="boton de cierre"
+                  class="popup__close popup__close-image"
+                />
+              </button>
               <img
                 src="https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg"
                 alt="imagen expandida"
                 class="popup__image_expand"
               />
+
               <h2 class="popup__image_title">Autor</h2>
             </div>
           </div>
         </div>
-        <section></section>
+        <div class="elements"></div>
       </main>
       <footer class="footer">&copy; 2021 Around The U.S.</footer>
-      <template class="card__template">
-        <div class="card">
-          <div class="card__trash"></div>
-          <img src="." class="card__image" />
-          <div class="card__content">
-            <h2 class="card__place"></h2>
-            <div class="card__like"></div>
+      <div class="card__templates">
+        <template class="card__template">
+          <div class="card">
+            <div class="card__trash"></div>
+            <img src="." alt="" class="card__image" />
+            <div class="card__content">
+              <h2 class="card__place"></h2>
+              <div class="card__like"></div>
+            </div>
           </div>
-        </div>
-      </template>
-      <script src="./index.js" type="module"></script>
+        </template>
+      </div>
+      <script src="./scripts/index.js" type="module"></script>
     </div>
   </body>
 </html>
