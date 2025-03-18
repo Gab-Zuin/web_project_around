@@ -4,12 +4,12 @@ Reutilización: Al tener los addEventListener en un archivo separado, puedes reu
 Mantenimiento: Facilita el mantenimiento del código, ya que puedes encontrar y actualizar la lógica de eventos en un solo lugar. */
 
 export const validationsSettings = {
-  formSelector: ".form__input",
-  inputSelector: ".popup__input",
+  formSelector: ".form",
+  inputSelector: ".form__input",
   submitButtonSelector: ".form__submit",
-  inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__error_visible",
+  inactiveButtonClass: "form__submit_disabled",
+  inputErrorClass: "form__input_type_error",
+  errorClass: "input_name-error",
 };
 
 export function openPopup(popupElement) {
