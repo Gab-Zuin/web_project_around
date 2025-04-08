@@ -13,14 +13,12 @@
 
 .popup__container {
   display: flex;
-  align-items: flex-end;
 }
 
 .popup__container_image {
   display: flex;
   background-color: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  height: 100vh;
+
   z-index: 99999;
   align-items: center;
   justify-content: center;
@@ -46,7 +44,7 @@
   background-color: transparent;
   position: relative;
   right: -472px;
-  top: -357px;
+  top: -34px;
 }
 
 .popup__close-image {
