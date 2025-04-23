@@ -1,9 +1,22 @@
 export default class Card {
-  constructor(data, cardSelector, handleClickImage) {
+  constructor(
+    data,
+    cardSelector,
+    handleClickImage,
+    handleDeleteCard,
+    handleAddLike,
+    handleRemoveLike
+  ) {
+    /*const (name, link, isLiked) = data;*/
     this._name = data.name;
     this._link = data.link;
+    this._isLiked = data.isLiked;
+    this._id = data._id;
     this._cardSelector = cardSelector;
     this._handleClickImage = handleClickImage;
+    this._handleDeleteCard = handleDeleteCard;
+    this._handleAddLike = handleAddLike;
+    this._handleRemoveLike = handleRemoveLike;
   }
 
   _getTemplate() {
@@ -33,7 +46,17 @@ export default class Card {
   }
 
   _handleLikeClick() {
-    this._likeButton.classList.toggle("card__like_active");
+    //this._likeButton.classList.toggle("card__like_active");
+    if (this._isLiked) {
+      console.log("Se debe llamar a quitar like");
+      this._handleRemoveLike(this._id).then((card) => {
+        this._likeButton.classList.remove("card__like_active");
+        this._isLiked = false;
+      });
+    } else {
+      console.log("Se debe llamar a poner dislike");
+    }
+    this._isLiked = !this._isLiked;
   }
 
   getView() {
