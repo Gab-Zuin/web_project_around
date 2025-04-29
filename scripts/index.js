@@ -14,13 +14,30 @@ import { api } from "./Api.js";
 import Section from "./Section.js";
 import PopupWithForm from "./PopupWithForm.js";
 import PopupWithImage from "./PopupWithImage.js";
+import PopupWithConfirmation from "./PopupWithConfirmation.js";
 
 // Funciones relacionadas con las tarjetas
-function cardCreate(card) {
-  const newCard = new Card(card, ".card__template", (link, name) => {
-    popupImage.openPopup(link, name);
-  }).getView();
-  container.prepend(newCard);
+function cardCreate(item) {
+  const newCard = new Card(
+    item,
+    ".card__template",
+    //click card
+    (link, name) => {
+      popupImage.openPopup(link, name);
+    },
+    //delete card
+    (cardElement, cardId) => {
+      // popupCloseCard.openPopup(cardId);
+      popupDeleteCard.openPopup(cardElement, cardId);
+    },
+    (cardId) => {
+      return api.addLike(cardId);
+    },
+    (cardId) => {
+      return api.removeLike(cardId);
+    }
+  );
+  return newCard;
 }
 /* api.getUserInfo().then((response) => {
   console.log(response);
@@ -52,20 +69,7 @@ api
       {
         items: response,
         renderer: (item) => {
-          const card = new Card(
-            item,
-            ".card__template",
-            (link, name) => {
-              popupImage.openPopup(link, name);
-            },
-            (cardId) => {},
-            (cardId) => {
-              return api.addLike(cardId);
-            },
-            (cardId) => {
-              return api.removeLike(cardId);
-            }
-          );
+          const card = cardCreate(item);
           const cardElement = card.getView();
           section.addItem(cardElement);
         },
@@ -146,7 +150,8 @@ popupCard.setEventListeners(({ title, link }) => {
   api
     .createCard({ name: title, link })
     .then((res) => {
-      cardCreate(res);
+      const newCard = cardCreate(res);
+      container.prepend(newCard.getView());
     })
     .catch((err) => {
       console.error(`Error al agregar la tarjeta: ${err}`);
@@ -159,3 +164,17 @@ addButton.addEventListener("click", () => popupCard.openPopup());
 
 const popupImage = new PopupWithImage("#popup-image");
 popupImage.setEventListeners();
+
+const popupDeleteCard = new PopupWithConfirmation("#popup-delete-card");
+popupDeleteCard.setEventListeners();
+
+popupDeleteCard.setHandleConfirmDelete((cardElement, cardId) => {
+  api
+    .deleteCard(cardId)
+    .then(() => {
+      cardElement.remove();
+    })
+    .catch((err) => {
+      console.error(`Error al eliminar la tarjeta: ${err}`);
+    });
+});

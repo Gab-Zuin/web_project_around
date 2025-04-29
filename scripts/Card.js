@@ -3,18 +3,20 @@ export default class Card {
     data,
     cardSelector,
     handleClickImage,
-    handleDeleteCard,
+    handleDeletePopup,
     handleAddLike,
-    handleRemoveLike
+    handleRemoveLike,
+    userId
   ) {
-    /*const (name, link, isLiked) = data;*/
     this._name = data.name;
     this._link = data.link;
-    this._isLiked = data.isLiked;
     this._id = data._id;
+    this._isLiked = data.isLiked;
+    this._ownerId = data.owner._id; // ID del propietario de la tarjeta
+    this._userId = userId; // ID del usuario actual
     this._cardSelector = cardSelector;
     this._handleClickImage = handleClickImage;
-    this._handleDeleteCard = handleDeleteCard;
+    this._handleDeletePopup = handleDeletePopup;
     this._handleAddLike = handleAddLike;
     this._handleRemoveLike = handleRemoveLike;
   }
@@ -29,34 +31,52 @@ export default class Card {
 
   _setEventListeners() {
     this._deleteButton = this._element.querySelector(".card__trash");
+    if (this._ownerId !== this._userId) {
+      this._deleteButton.remove(); // Elimina el botón si no pertenece al usuario actual
+    }
     this._likeButton = this._element.querySelector(".card__like");
     this._imageCard = this._element.querySelector(".card__image");
 
-    this._deleteButton.addEventListener("click", () =>
-      this._handleDeleteCard()
-    );
-    this._likeButton.addEventListener("click", () => this._handleLikeClick());
-    this._imageCard.addEventListener("click", () =>
-      this._handleClickImage(this._link, this._name)
-    );
+    // Evento para abrir el popup de confirmación de eliminación
+    if (this._deleteButton) {
+      this._deleteButton.addEventListener("click", () => {
+        this._handleDeletePopup(this._element, this._id); // Pasa el elemento y el ID al popup
+      });
+    }
+
+    if (this._isLiked) {
+      this._likeButton.classList.add("card__like_active");
+    }
+    // Evento para manejar el like
+    this._likeButton.addEventListener("click", () => {
+      this._handleLikeClick();
+    });
+
+    // Evento para abrir el popup de imagen
+    this._imageCard.addEventListener("click", () => {
+      this._handleClickImage(this._link, this._name);
+    });
   }
 
+  // Evento para abrir el popup de eliminar tarjeta
   _handleDeleteCard() {
-    this._element.remove();
+    this._deleteButton.addEventListener("click", () => {
+      this._handleDeletePopup(this._element, this._id); // Pasa el elemento y el ID al popup
+    });
   }
 
   _handleLikeClick() {
-    //this._likeButton.classList.toggle("card__like_active");
     if (this._isLiked) {
-      console.log("Se debe llamar a quitar like");
-      this._handleRemoveLike(this._id).then((card) => {
+      this._handleRemoveLike(this._id).then(() => {
         this._likeButton.classList.remove("card__like_active");
         this._isLiked = false;
       });
     } else {
-      console.log("Se debe llamar a poner dislike");
+      this._handleAddLike(this._id).then(() => {
+        this._likeButton.classList.add("card__like_active");
+        this._isLiked = true;
+      });
     }
-    this._isLiked = !this._isLiked;
   }
 
   getView() {
