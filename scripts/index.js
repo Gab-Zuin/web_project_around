@@ -1,5 +1,5 @@
-import Card from "../scripts/Card.js";
-import FormValidator from "../scripts/FormValidator.js";
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
 import {
   validationsSettings,
   profileButton,
@@ -9,12 +9,12 @@ import {
   container,
   addButton,
   formAddCard,
-} from "../scripts/utils.js";
-import { api } from "../scripts/Api.js";
-import Section from "../scripts/Section.js";
-import PopupWithForm from "../scripts/PopupWithForm.js";
-import PopupWithImage from "../scripts/PopupWithImage.js";
-import PopupWithConfirmation from "../scripts/PopupWithConfirmation.js";
+} from "./utils.js";
+import { api } from "./Api.js";
+import Section from "./Section.js";
+import PopupWithForm from "./PopupWithForm.js";
+import PopupWithImage from "./PopupWithImage.js";
+import PopupWithConfirmation from "./PopupWithConfirmation.js";
 
 // Funciones relacionadas con las tarjetas
 function cardCreate(item) {
