@@ -39,6 +39,17 @@ function cardCreate(item) {
   );
   return newCard;
 }
+
+api
+  .getUserInfo()
+  .then((userData) => {
+    profileName.textContent = userData.name;
+    profileProfession.textContent = userData.about;
+  })
+  .catch((err) => {
+    console.error(`Error al obtener los datos del usuario: ${err}`);
+  });
+
 /* api.getUserInfo().then((response) => {
   console.log(response);
 }); */
